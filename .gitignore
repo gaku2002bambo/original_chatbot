@@ -48,3 +48,7 @@ xcuserdata/
 # 8) Git LFS を使うなら（任意）
 # ↓ LFS で追跡する拡張子を .gitattributes に書く
 # *.safetensors filter=lfs diff=lfs merge=lfs -text
+
+
+mlc-llm/
+

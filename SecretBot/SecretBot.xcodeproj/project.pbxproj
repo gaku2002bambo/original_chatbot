@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1D0E33052E43742600D79EAB /* MLCSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1D0E33042E43742600D79EAB /* MLCSwift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		1D0E32E72E43728000D79EAB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -45,6 +49,11 @@
 			path = SecretBotUITests;
 			sourceTree = "<group>";
 		};
+		1D0E33592E43744500D79EAB /* phi3_myself-MLC */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "phi3_myself-MLC";
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D0E33052E43742600D79EAB /* MLCSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +89,7 @@
 				1D0E32E92E43728000D79EAB /* SecretBotTests */,
 				1D0E32F32E43728000D79EAB /* SecretBotUITests */,
 				1D0E32D82E43727F00D79EAB /* Products */,
+				1D0E33592E43744500D79EAB /* phi3_myself-MLC */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,9 +120,11 @@
 			);
 			fileSystemSynchronizedGroups = (
 				1D0E32D92E43727F00D79EAB /* SecretBot */,
+				1D0E33592E43744500D79EAB /* phi3_myself-MLC */,
 			);
 			name = SecretBot;
 			packageProductDependencies = (
+				1D0E33042E43742600D79EAB /* MLCSwift */,
 			);
 			productName = SecretBot;
 			productReference = 1D0E32D72E43727F00D79EAB /* SecretBot.app */;
@@ -195,6 +208,9 @@
 			);
 			mainGroup = 1D0E32CE2E43727F00D79EAB;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				1D0E33032E43742600D79EAB /* XCLocalSwiftPackageReference "../mlc-llm/ios/MLCSwift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1D0E32D82E43727F00D79EAB /* Products */;
 			projectDirPath = "";
@@ -550,6 +566,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		1D0E33032E43742600D79EAB /* XCLocalSwiftPackageReference "../mlc-llm/ios/MLCSwift" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../mlc-llm/ios/MLCSwift";
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1D0E33042E43742600D79EAB /* MLCSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MLCSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1D0E32CF2E43727F00D79EAB /* Project object */;
 }
