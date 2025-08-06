@@ -1,61 +1,42 @@
-//
-//  ContentView.swift
-//  SecretBot
-//
-//  Created by 生駒岳太郎 on 2025/08/06.
-//
-
 import SwiftUI
-import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    @StateObject private var vm = ChatViewModel()
+    @State private var input = ""
 
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+        VStack {
+            // 履歴表示
+            ScrollViewReader { proxy in
+                ScrollView {
+                    ForEach(vm.history.indices, id: \.self) { idx in
+                        Text(vm.history[idx])
+                            .frame(maxWidth: .infinity,
+                                   alignment: vm.history[idx].hasPrefix("👤") ? .trailing : .leading)
+                            .padding(.vertical, 2)
+                            .id(idx)
                     }
                 }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
+                .onChange(of: vm.history.count) { _, _ in 
+                    proxy.scrollTo(vm.history.indices.last)
                 }
             }
-        } detail: {
-            Text("Select an item")
-        }
-    }
+            .background(Color(.systemGray6))
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .padding()
 
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
+            // 入力欄
+            HStack {
+                TextField("メッセージを入力", text: $input)
+                    .textFieldStyle(.roundedBorder)
+                Button("送信") {
+                    let text = input; input = ""
+                    Task { await vm.send(text) }
+                }
+                .buttonStyle(.borderedProminent)
             }
+            .padding(.horizontal)
         }
+        .padding(.bottom)
     }
-}
-
-#Preview {
-    ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
 }
