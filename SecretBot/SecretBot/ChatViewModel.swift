@@ -33,8 +33,8 @@ final class ChatViewModel: ObservableObject {
         
         Task {
             // Load the model with appropriate model library
-            // You may need to adjust the modelLib parameter based on your setup
-            await engine.reload(modelPath: modelPath, modelLib: "phi3-mini")
+            // Using phi_3 as the model library identifier for Phi-3 models
+            await engine.reload(modelPath: modelPath, modelLib: "phi_3")
         }
     }
 
