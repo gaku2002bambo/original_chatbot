@@ -1,0 +1,50 @@
+# 1) macOS のゴミ
+.DS_Store
+.Icon?
+
+# 2) Python 仮想環境 / キャッシュ
+mlx_venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# 3) モデル・学習生成物
+phi3_myself/
+phi3_myself-MLC/
+adapters/                 # LoRA 重み
+*.safetensors
+*.bin
+*.pt
+*.ckpt
+*.onnx
+SecretBot/phi3_myself-MLC/
+
+
+# 4) データセット類
+data/
+*.jsonl
+train.jsonl
+*.csv
+
+# 5) Xcode ビルド成果物 & ワークスペース
+DerivedData/
+.build/
+*.xcworkspace/
+xcuserdata/
+*.xcuserstate
+*.xcsettings
+*.xcodeproj/project.xcworkspace/xcshareddata/
+*.xcodeproj/xcuserdata/
+
+# 6) Xcode 生成署名ファイル
+*.dSYM
+*.ipa
+*.app
+
+# 7) Swift Package artifacts
+.build/
+.swiftpm/xcode/PackageDescription.swift
+
+# 8) Git LFS を使うなら（任意）
+# ↓ LFS で追跡する拡張子を .gitattributes に書く
+# *.safetensors filter=lfs diff=lfs merge=lfs -text
